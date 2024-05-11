@@ -1,0 +1,31 @@
+﻿@model Emp_Travel_Booking_Sys.Models.Login
+
+@{
+    ViewBag.Title = "Add/Edit Travel Agent";
+}
+
+<h2>Add/Edit Travel Agent</h2>
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.Id)
+        @Html.TextBoxFor(model => model.Id, new { @class = "form-control" })
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.Password)
+        @Html.TextBoxFor(model => model.Password, new { @class = "form-control" })
+    </div>
+
+    @*<div class="form-group">
+        @Html.LabelFor(model => model.TravelAgentPassword)
+        @Html.PasswordFor(model => model.TravelAgentPassword, new { @class = "form-control" })
+    </div>*@
+
+    <!-- Add other input fields for travel agent properties -->
+
+    <button type="submit" class="btn btn-primary">Save</button>
+}

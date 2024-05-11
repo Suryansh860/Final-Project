@@ -1,0 +1,146 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="Employee_Travel_Booking_SystemModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="admins">
+    <Key>
+      <PropertyRef Name="adminid" />
+    </Key>
+    <Property Name="adminid" Type="int" Nullable="false" />
+    <Property Name="name" Type="varchar" MaxLength="100" />
+    <Property Name="email" Type="varchar" MaxLength="100" />
+    <Property Name="admin_password" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="bookingstatus">
+    <Key>
+      <PropertyRef Name="bookingid" />
+    </Key>
+    <Property Name="bookingid" Type="int" Nullable="false" />
+    <Property Name="requestid" Type="int" />
+    <Property Name="agentid" Type="int" />
+    <Property Name="status" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="employees">
+    <Key>
+      <PropertyRef Name="employeeid" />
+    </Key>
+    <Property Name="employeeid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="emp_name" Type="varchar" MaxLength="50" />
+    <Property Name="email" Type="varchar" MaxLength="50" />
+    <Property Name="emp_password" Type="varchar" MaxLength="50" />
+    <Property Name="department" Type="varchar" MaxLength="50" />
+    <Property Name="position" Type="varchar" MaxLength="50" />
+    <Property Name="hiredate" Type="date" />
+    <Property Name="phonenumber" Type="varchar" MaxLength="20" />
+    <Property Name="address" Type="varchar" MaxLength="255" />
+    <Property Name="Reporting_Manager_Id" Type="int" />
+  </EntityType>
+  <EntityType Name="managers">
+    <Key>
+      <PropertyRef Name="managerid" />
+    </Key>
+    <Property Name="managerid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="name" Type="varchar" MaxLength="50" />
+    <Property Name="department" Type="varchar" MaxLength="50" />
+    <Property Name="email" Type="varchar" MaxLength="50" />
+    <Property Name="mgr_password" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="travelagents">
+    <Key>
+      <PropertyRef Name="agentid" />
+    </Key>
+    <Property Name="agentid" Type="int" Nullable="false" />
+    <Property Name="name" Type="varchar" MaxLength="100" />
+    <Property Name="email" Type="varchar" MaxLength="100" />
+    <Property Name="travel_agent_password" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="travelRequest">
+    <Key>
+      <PropertyRef Name="requestid" />
+    </Key>
+    <Property Name="requestid" Type="int" Nullable="false" />
+    <Property Name="employeeFirstName" Type="varchar" MaxLength="100" />
+    <Property Name="employeeLastName" Type="varchar" MaxLength="100" />
+    <Property Name="employeeEmail" Type="varchar" MaxLength="100" />
+    <Property Name="employeeid" Type="int" />
+    <Property Name="reasonForTravel" Type="varchar" MaxLength="255" />
+    <Property Name="flightNeeded" Type="bit" />
+    <Property Name="hotelNeeded" Type="bit" />
+    <Property Name="departureCity" Type="varchar" MaxLength="100" />
+    <Property Name="arrivalCity" Type="varchar" MaxLength="100" />
+    <Property Name="departureDate" Type="date" />
+    <Property Name="arrivalDate" Type="date" />
+    <Property Name="additionalInformation" Type="text" />
+    <Property Name="approvalstatus" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <Association Name="FK__bookingst__agent__6477ECF3">
+    <End Role="travelagents" Type="Self.travelagents" Multiplicity="0..1" />
+    <End Role="bookingstatus" Type="Self.bookingstatus" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="travelagents">
+        <PropertyRef Name="agentid" />
+      </Principal>
+      <Dependent Role="bookingstatus">
+        <PropertyRef Name="agentid" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__bookingst__reque__6383C8BA">
+    <End Role="travelRequest" Type="Self.travelRequest" Multiplicity="0..1" />
+    <End Role="bookingstatus" Type="Self.bookingstatus" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="travelRequest">
+        <PropertyRef Name="requestid" />
+      </Principal>
+      <Dependent Role="bookingstatus">
+        <PropertyRef Name="requestid" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__employees__Repor__403A8C7D">
+    <End Role="managers" Type="Self.managers" Multiplicity="0..1" />
+    <End Role="employees" Type="Self.employees" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="managers">
+        <PropertyRef Name="managerid" />
+      </Principal>
+      <Dependent Role="employees">
+        <PropertyRef Name="Reporting_Manager_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__travelReq__emplo__5DCAEF64">
+    <End Role="employees" Type="Self.employees" Multiplicity="0..1" />
+    <End Role="travelRequest" Type="Self.travelRequest" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="employees">
+        <PropertyRef Name="employeeid" />
+      </Principal>
+      <Dependent Role="travelRequest">
+        <PropertyRef Name="employeeid" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="Employee_Travel_Booking_SystemModelStoreContainer">
+    <EntitySet Name="admins" EntityType="Self.admins" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="bookingstatus" EntityType="Self.bookingstatus" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="employees" EntityType="Self.employees" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="managers" EntityType="Self.managers" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="travelagents" EntityType="Self.travelagents" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="travelRequest" EntityType="Self.travelRequest" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK__bookingst__agent__6477ECF3" Association="Self.FK__bookingst__agent__6477ECF3">
+      <End Role="travelagents" EntitySet="travelagents" />
+      <End Role="bookingstatus" EntitySet="bookingstatus" />
+    </AssociationSet>
+    <AssociationSet Name="FK__bookingst__reque__6383C8BA" Association="Self.FK__bookingst__reque__6383C8BA">
+      <End Role="travelRequest" EntitySet="travelRequest" />
+      <End Role="bookingstatus" EntitySet="bookingstatus" />
+    </AssociationSet>
+    <AssociationSet Name="FK__employees__Repor__403A8C7D" Association="Self.FK__employees__Repor__403A8C7D">
+      <End Role="managers" EntitySet="managers" />
+      <End Role="employees" EntitySet="employees" />
+    </AssociationSet>
+    <AssociationSet Name="FK__travelReq__emplo__5DCAEF64" Association="Self.FK__travelReq__emplo__5DCAEF64">
+      <End Role="employees" EntitySet="employees" />
+      <End Role="travelRequest" EntitySet="travelRequest" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

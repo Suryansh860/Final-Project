@@ -1,0 +1,115 @@
+﻿@model IEnumerable<Emp_Travel_Booking_Sys.Models.travelRequest>
+
+@{
+    ViewBag.Title = "RequestHistory";
+}
+
+<style>
+    body {
+        background-color: navy;
+        color: white;
+    }
+
+    .table th, .table td {
+        color: white;
+    }
+</style>
+
+<h2>Request History of Employee</h2>
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.requestid)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.employeeFirstName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.employeeLastName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.employeeEmail)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.employeeid)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.reasonForTravel)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.flightNeeded)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.hotelNeeded)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.departureCity)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.arrivalCity)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.departureDate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.arrivalDate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.additionalInformation)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.approvalstatus)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.requestid)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.employeeFirstName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.employeeLastName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.employeeEmail)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.employeeid)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.reasonForTravel)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.flightNeeded)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.hotelNeeded)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.departureCity)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.arrivalCity)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.departureDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.arrivalDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.additionalInformation)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.approvalstatus)
+            </td>
+        </tr>
+    }
+
+</table>

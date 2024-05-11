@@ -1,0 +1,41 @@
+﻿@model List<Emp_Travel_Booking_Sys.Models.travelRequest>
+
+@{
+    ViewBag.Title = "pendingRequests";
+}
+
+<h2>Pending Travel Requests</h2>
+
+<table class="table">
+    <tr>
+        <th>Request ID</th>
+        <th>Employee Name</th>
+        <th>Departure City</th>
+        <th>Arrival City</th>
+        <th>Departure Date</th>
+        <th>Actions</th>
+    </tr>
+    @foreach (var request in Model)
+    {
+        <tr>
+            <td>@request.requestid</td>
+            <td>@(request.employeeFirstName + " " + request.employeeLastName)</td>
+            <td>@request.departureCity</td>
+            <td>@request.arrivalCity</td>
+            <td>@request.departureDate</td>
+            <td>
+                @Html.ActionLink("Details", "Details", new { id = request.requestid }, new { @class = "btn btn-info" })
+                @using (Html.BeginForm("Approve", "Manager", new { id = request.requestid }, FormMethod.Post))
+                {
+                    @Html.AntiForgeryToken()
+                    <button type="submit" class="btn btn-success">Approve</button>
+                }
+                @using (Html.BeginForm("Reject", "Manager", new { id = request.requestid }, FormMethod.Post))
+                {
+                    @Html.AntiForgeryToken()
+                    <button type="submit" class="btn btn-danger">Reject</button>
+                }
+            </td>
+        </tr>
+    }
+</table>

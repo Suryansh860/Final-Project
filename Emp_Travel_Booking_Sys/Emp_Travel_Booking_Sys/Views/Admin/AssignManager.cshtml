@@ -1,0 +1,24 @@
+﻿@model Emp_Travel_Booking_Sys.Models.Login
+
+@{
+    ViewBag.Title = "Assign Manager";
+}
+
+<h2>Assign Manager</h2>
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-group">
+        @Html.Label("Employee")
+        @Html.DropDownList("employeeId", new SelectList(ViewBag.Employees, "EmployeeId", "Name"), "-- Select Employee --", new { @class = "form-control" })
+    </div>
+
+    <div class="form-group">
+        @Html.Label("Manager")
+        @Html.DropDownList("managerId", new SelectList(ViewBag.Managers, "ManagerId", "Name"), "-- Select Manager --", new { @class = "form-control" })
+    </div>
+
+    <button type="submit" class="btn btn-primary">Assign Manager</button>
+}

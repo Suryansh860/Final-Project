@@ -1,0 +1,51 @@
+﻿@model Emp_Travel_Booking_Sys.employee
+
+@{
+    ViewBag.Title = "Add Employee";
+}
+
+<h2>Add Employee</h2>
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.emp_name)
+        @Html.TextBoxFor(model => model.emp_name, new { @class = "form-control" })
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(model => model.email)
+        @Html.TextBoxFor(model => model.email, new { @class = "form-control" })
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(model => model.emp_password)
+        @Html.TextBoxFor(model => model.emp_password, new { @class = "form-control" })
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(model => model.department)
+        @Html.TextBoxFor(model => model.department, new { @class = "form-control" })
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(model => model.position)
+        @Html.TextBoxFor(model => model.position, new { @class = "form-control" })
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(model => model.hiredate)
+        @Html.TextBoxFor(model => model.hiredate, new { @class = "form-control" })
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(model => model.phonenumber)
+        @Html.TextBoxFor(model => model.phonenumber, new { @class = "form-control" })
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(model => model.address)
+        @Html.TextBoxFor(model => model.address, new { @class = "form-control" })
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(model => model.Reporting_Manager_Id)
+        @Html.TextBoxFor(model => model.Reporting_Manager_Id, new { @class = "form-control" })
+    </div>
+
+    <button type="submit" class="btn btn-primary">Save</button>
+}
