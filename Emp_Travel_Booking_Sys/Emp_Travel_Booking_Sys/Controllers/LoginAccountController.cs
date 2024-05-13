@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using System.Web.Helpers;
 using System.Web.Mvc;
 using Emp_Travel_Booking_Sys.Models;
 
@@ -27,11 +28,11 @@ namespace Emp_Travel_Booking_Sys.Controllers
                 // Redirect to the appropriate page based on user role
                 return RedirectToAction("Admin");
             }
-            else if (IsValidEmployee(Id, password))
-            {
-                // Redirect to the appropriate page based on user role
-                return RedirectToAction("Employee");
-            }
+            //else if (IsValidEmployee(Id, password))
+            //{
+            //    // Redirect to the appropriate page based on user role
+            //    return RedirectToAction("Employee");
+            //}
             else if (IsValidTravelAgent(Id, password))
             {
                 // Redirect to the appropriate page based on user role
@@ -39,6 +40,9 @@ namespace Emp_Travel_Booking_Sys.Controllers
             }
             else if (IsValidManager(Id, password))
             {
+                // Store manager's ID in session
+                Session["ManagerId"] = Id;
+
                 // Redirect to the appropriate page based on user role
                 return RedirectToAction("managerpage","Manager");
             }
@@ -75,11 +79,11 @@ namespace Emp_Travel_Booking_Sys.Controllers
             return admin != null;
         }
 
-        private bool IsValidEmployee(int Id, string password)
-        {
-            var employee = ETB.employees.FirstOrDefault(u => u.employeeid == Id && u.emp_password == password);
-            return employee != null;
-        }
+        //private bool IsValidEmployee(int Id, string password)
+        //{
+        //    var employee = ETB.employees.FirstOrDefault(u => u.employeeid == Id && u.emp_password == password);
+        //    return employee != null;
+        //}
 
         private bool IsValidTravelAgent(int Id, string password)
         {

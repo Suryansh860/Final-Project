@@ -8,108 +8,83 @@
     body {
         background-color: navy;
         color: white;
+        font-family: Arial, sans-serif;
     }
 
     .table th, .table td {
-        color: white;
+        padding: 8px;
+        text-align: left;
+        vertical-align: top;
+    }
+
+    .table th {
+        background-color: aliceblue;
+    }
+
+    .table td {
+        background-color: aliceblue;
+    }
+
+    .table th, .table td {
+        border: 1px solid #000;
+    }
+
+        .table td:first-child {
+            border-left: none;
+        }
+
+        .table td:last-child {
+            border-right: none;
+        }
+
+    .table tr:last-child td {
+        border-bottom: none;
     }
 </style>
 
-<h2>Request History of Employee</h2>
+<h2>Request History of Employees:</h2>
 
 <table class="table">
     <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.requestid)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.employeeFirstName)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.employeeLastName)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.employeeEmail)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.employeeid)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.reasonForTravel)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.flightNeeded)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.hotelNeeded)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.departureCity)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.arrivalCity)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.departureDate)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.arrivalDate)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.additionalInformation)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.approvalstatus)
-        </th>
+        <th>Request Id</th>
+        <th>First Name</th>
+        <th>Last Name</th>
+        <th>Employee Email</th>
+        <th>Employee Id</th>
+        <th>Reason For Travel</th>
+        <th>Flight Needed</th>
+        <th>Hotel Needed</th>
+        <th>Departure City</th>
+        <th>Arrival City</th>
+        <th>Departure Date</th>
+        <th>Arrival Date</th>
+        <th>Additional Information</th>
+        <th>Approval Status</th>
         <th></th>
     </tr>
 
     @foreach (var item in Model)
     {
         <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.requestid)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.employeeFirstName)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.employeeLastName)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.employeeEmail)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.employeeid)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.reasonForTravel)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.flightNeeded)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.hotelNeeded)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.departureCity)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.arrivalCity)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.departureDate)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.arrivalDate)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.additionalInformation)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.approvalstatus)
-            </td>
+            <td>@Html.DisplayFor(modelItem => item.requestid)</td>
+            <td>@Html.DisplayFor(modelItem => item.employeeFirstName)</td>
+            <td>@Html.DisplayFor(modelItem => item.employeeLastName)</td>
+            <td>@Html.DisplayFor(modelItem => item.employeeEmail)</td>
+            <td>@Html.DisplayFor(modelItem => item.employeeid)</td>
+            <td>@Html.DisplayFor(modelItem => item.reasonForTravel)</td>
+            <td>@Html.DisplayFor(modelItem => item.flightNeeded)</td>
+            <td>@Html.DisplayFor(modelItem => item.hotelNeeded)</td>
+            <td>@Html.DisplayFor(modelItem => item.departureCity)</td>
+            <td>@Html.DisplayFor(modelItem => item.arrivalCity)</td>
+            <td>@Html.DisplayFor(modelItem => item.departureDate)</td>
+            <td>@Html.DisplayFor(modelItem => item.arrivalDate)</td>
+            <td>@Html.DisplayFor(modelItem => item.additionalInformation)</td>
+            <td>@Html.DisplayFor(modelItem => item.approvalstatus)</td>
+            <td></td>
         </tr>
     }
-
 </table>
+
+<div style="margin-top: 20px; text-align: center;">
+    <a href="@Url.Action("managerpage", "Manager")" class="btn btn-dark">Back To Dashboard</a>
+</div>

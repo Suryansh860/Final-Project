@@ -108,9 +108,13 @@ Select * from bookingstatus
 Insert into admins values(111,'Suryansh','SuryanshD@gmail.com','Surya@123')
 
 Insert into managers values('Venuegopal','It','Venue@gmail.com','Venue@123')
+Insert into managers values('Surya','Development','Surya@gmail.com','Surya@123')
 
 Insert into employees values('Suryansh','Suryansh@gmail.com','Ssssss','It','S.E.','02-02-2022','1234567890','HYD',100),
 ('Vishal','Vishu@gmail.com','Ssssss','It','S.E.','02-02-2022','1234567890','HYD',100)
+
+Insert into employees values('S D','Suryansh@gmail.com','Ssssss','It','S.E.','02-02-2022','1234567890','HYD',101),
+('V D','Vishu@gmail.com','Ssssss','It','S.E.','02-02-2022','1234567890','HYD',101)
    
 
 Insert into travelRequest values(1, 'John', 'Doe', 'john.doe@example.com', 101, 'Business meeting', 1, 1, 'New York',
@@ -120,6 +124,18 @@ Insert into travelRequest values(3, 'John', 'Doe', 'john.doe@example.com', 102, 
 Insert into travelRequest values(4, 'John', 'Doe', 'john.doe@example.com', 103, 'Business meeting', 1, 1, 'New York',
 'Los Angeles', '2024-05-15', '2024-05-20', 'Additional info 1','pending')
 Insert into travelRequest values(5, 'John', 'Doe', 'john.doe@example.com', 101, 'Business meeting', 1, 1, 'New York',
+'Los Angeles', '2024-05-15', '2024-05-20', 'Additional info 1', 'pending')
+
+
+
+--values for manager surya 
+Insert into travelRequest values(6, 'John2', 'Doe', 'john.doe@example.com', 108, 'Business meeting', 1, 1, 'New York',
+'Los Angeles', '2024-05-15', '2024-05-20', 'Additional info 1', 'pending')
+Insert into travelRequest values(7, 'John2', 'Doe', 'john.doe@example.com', 109, 'Business meeting', 1, 1, 'New York',
+'Los Angeles', '2024-05-15', '2024-05-20', 'Additional info 1', 'pending')
+Insert into travelRequest values(8, 'John2', 'Doe', 'john.doe@example.com', 108, 'Business meeting', 1, 1, 'New York',
+'Los Angeles', '2024-05-15', '2024-05-20', 'Additional info 1','pending')
+Insert into travelRequest values(9, 'John2', 'Doe', 'john.doe@example.com', 109, 'Business meeting', 1, 1, 'New York',
 'Los Angeles', '2024-05-15', '2024-05-20', 'Additional info 1', 'pending')
 
 Insert into travelRequest(requestid, employeeFirstName, employeeLastName, employeeEmail, employeeid, reasonForTravel, flightNeeded, hotelNeeded, departureCity, arrivalCity, departureDate, arrivalDate, additionalInformation) 

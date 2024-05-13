@@ -18,9 +18,14 @@ namespace Emp_Travel_Booking_Sys.Controllers
         }
         public ActionResult Index()
         {
-            // Retrieve all travel requests awaiting approval
-            var pendingRequests = db.travelRequests.Where(r => r.approvalstatus == "pending").ToList();
+            // Get the manager's login ID from the session
+            int? managerId = Session["ManagerId"] as int?;
+
+            // Retrieve travel requests of employees reporting to this manager
+            var pendingRequests = db.travelRequests.Where(r => r.approvalstatus == "pending" && r.employee.Reporting_Manager_Id == managerId).ToList();
+
             return View(pendingRequests);
+
         }
 
         // GET: Manager/Details/5
@@ -57,8 +62,11 @@ namespace Emp_Travel_Booking_Sys.Controllers
 
         public ActionResult RequestHistory()
         {
+            // Get the manager's login ID from the session
+            int? managerId = Session["ManagerId"] as int?;
+
             // Retrieve the history of travel requests made by reporting employees
-            var requestHistory = db.travelRequests.Where(r => r.employeeid == r.employeeid).ToList();
+            var requestHistory = db.travelRequests.Where(r => r.employeeid == r.employeeid && r.employee.Reporting_Manager_Id == managerId).ToList();
             return View(requestHistory);
         }
     }
